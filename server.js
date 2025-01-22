@@ -5,7 +5,16 @@ const axios = require("axios");
 const app = express();
 const port = 5000;
 
-app.use(cors({ origin: "https://rq-frontend.vercel.app/", credentials: true }));
+
+app.use(
+  cors({
+    origin: "*", // Allows requests from any origin
+    credentials: true, // Include credentials (cookies, authorization headers)
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
+    allowedHeaders:
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+  })
+);
 
 app.use(express.json());
 app.use(express.json({ limit: "50mb" }));
